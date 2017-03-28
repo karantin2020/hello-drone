@@ -2,6 +2,11 @@ workspace:
   base: /wrkspace
   path: src/github.com/karantin2020/hello-drone
 
+clone:
+  git:
+    image: plugins/git
+    depth: 50
+
 pipeline:
 
   # these steps define a parallel execution
