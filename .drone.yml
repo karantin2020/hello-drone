@@ -1,5 +1,6 @@
 workspace:
   base: /wrkspace
+  path: src/github.com/karantin2020/hello-drone
 
 pipeline:
 
