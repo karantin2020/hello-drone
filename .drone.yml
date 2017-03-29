@@ -41,7 +41,7 @@ pipeline:
     image: alpine:edge
     commands:
       - echo this step should fail
-      - exit 1
+      - exit 0
   test1:
     image: alpine:edge
     group: failure
@@ -54,7 +54,7 @@ pipeline:
     image: alpine:edge
     group: failure
     commands:
-      - echo this step should not execute
+      - echo this step should not execute on failure
 
   # these steps define a parallel execution
   # group and will fan back out.
