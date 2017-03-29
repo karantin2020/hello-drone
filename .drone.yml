@@ -37,13 +37,24 @@ pipeline:
       - echo I should execute last.
       - echo after the prior two steps finish execution.
       
-  foobaz:
+  build:
     image: alpine:edge
-    group: build
     commands:
-      - echo step 2.1
-      - sleep 11
-      - echo done 2.1
+      - echo this step should fail
+      - exit 1
+  test1:
+    image: alpine:edge
+    group: failure
+    commands:
+      - echo this step should execute, despite failure
+    when:
+      status: [ failure ]
+  
+  test2:
+    image: alpine:edge
+    group: failure
+    commands:
+      - echo this step should not execute
 
   # these steps define a parallel execution
   # group and will fan back out.
