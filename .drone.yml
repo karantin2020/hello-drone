@@ -34,5 +34,5 @@ pipeline:
     commands:
       - echo deploy stage
     when:
-      event: deploymen
+      event: deployment
       environment: production
