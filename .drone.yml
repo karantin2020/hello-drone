@@ -16,7 +16,6 @@ pipeline:
     image: alpine:edge
     group: build
     commands:
-      - echo ${DRONE_BUILD_STARTED}
       - echo step 1
       - sleep 10
       - echo done 1
