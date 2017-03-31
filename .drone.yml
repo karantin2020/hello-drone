@@ -15,6 +15,7 @@ pipeline:
     image: alpine:edge
     commands:
       - echo this step should not fail
+      - echo DRONE_JOB_NUMBER ${DRONE_JOB_NUMBER}
       - exit 0
   test:
     image: alpine:edge
