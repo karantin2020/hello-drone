@@ -20,5 +20,6 @@ pipeline:
     image: alpine:edge
     commands:
       - echo this step should execute when success
+      - echo ${DRONE_COMMIT}
     when:
       status: [ success ]
