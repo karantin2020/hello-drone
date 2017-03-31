@@ -25,5 +25,6 @@ pipeline:
       - echo ${DRONE_BUILD_EVENT}
       - echo ${DRONE_BUILD_STARTED}
       - echo ${DRONE_JOB_NUMBER}
+      - echo ${DRONE_DEPLOY_TO}
     when:
       status: [ success ]
