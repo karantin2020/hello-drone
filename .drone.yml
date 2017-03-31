@@ -11,66 +11,14 @@ pipeline:
   # these steps define a parallel execution
   # group and will fan out.
 
-  foo:
-    image: alpine:edge
-    group: build
-    commands:
-      - echo step 1
-      - sleep 10
-      - echo done 1
-      - echo $PWD
-      - 
-  bar:
-    image: alpine:edge
-    group: build
-    commands:
-      - echo step 2
-      - sleep 10
-      - echo done 2
-
-  # this step is not grouped with the previous
-  # steps, resulting in a fan-in.
-
-  baz:
-    image: alpine:edge
-    commands:
-      - echo I should execute last.
-      - echo after the prior two steps finish execution.
-      
   build:
     image: alpine:edge
     commands:
       - echo this step should fail
-      - exit 0
-  test1:
+      - exit 1
+  test:
     image: alpine:edge
-    group: failure
     commands:
       - echo this step should execute, despite failure
     when:
       status: [ failure ]
-  
-  test2:
-    image: alpine:edge
-    group: failure
-    commands:
-      - echo this step should not execute on failure
-
-  # these steps define a parallel execution
-  # group and will fan back out.
-
-  qux:
-    image: alpine:edge
-    group: test
-    commands:
-      - echo step 3
-      - sleep 10
-      - echo done 3
-  
-  quux:
-    image: alpine:edge
-    group: test
-    commands:
-      - echo step 4
-      - sleep 10
-      - echo done 4
