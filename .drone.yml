@@ -29,9 +29,11 @@ pipeline:
     when:
       status: [ success ]
       
-  deploy:
+deploy:
+  doit:
     image: alpine:edge
     commands:
       - echo deploy stage
     when:
-      event: [ deployment ]
+      event: deployment
+      environment: production
