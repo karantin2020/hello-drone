@@ -17,9 +17,6 @@ pipeline:
     group: build
     commands:
       - echo ${DRONE_BUILD_STARTED}
-      - echo ${DRONE_BUILD_EVENT}
-      - echo ${DRONE_BRANCH}
-      - echo ${DRONE_DEPLOY_TO}
       - echo step 1
       - sleep 10
       - echo done 1
