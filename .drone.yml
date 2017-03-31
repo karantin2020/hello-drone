@@ -35,4 +35,3 @@ pipeline:
       - echo deploy stage
     when:
       environment: production
-      event: deployment
