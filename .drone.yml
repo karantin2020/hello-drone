@@ -14,11 +14,11 @@ pipeline:
   build:
     image: alpine:edge
     commands:
-      - echo this step should fail
-      - exit 1
+      - echo this step should not fail
+      - exit 0
   test:
     image: alpine:edge
     commands:
-      - echo this step should execute, despite failure
+      - echo this step should execute when success
     when:
-      status: [ failure ]
+      status: [ success ]
