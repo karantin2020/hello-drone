@@ -30,7 +30,7 @@ pipeline:
       - echo ${DRONE_JOB_NUMBER}
       - echo ${DRONE_DEPLOY_TO}
       - ls /
-      - touch /drone/foo/test.txt && cat "test foo" > /drone/foo/test.txt
+      - touch test.txt && cat "test foo" > test.txt && cp test.txt /drone/foo/
     when:
       status: [ success ]
 
