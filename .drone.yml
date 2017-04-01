@@ -33,7 +33,7 @@ pipeline:
     image: alpine:edge
     commands:
       - echo deploy step
-      - exit 0
+      - exit 1
     when:
       event: deployment
       environment: staging
