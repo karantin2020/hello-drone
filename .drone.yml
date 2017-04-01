@@ -11,7 +11,7 @@ pipeline:
   # these steps define a parallel execution
   # group and will fan out.
 
-  deploy:
+  build:
     image: alpine:edge
     commands:
       - echo this step should not fail
@@ -31,3 +31,13 @@ pipeline:
       - echo ${DRONE_DEPLOY_TO}
     when:
       status: [ success ]
+
+deploy:
+  one:
+    image: alpine:edge
+    commands:
+      - echo deploy step
+      - exit 0
+    when:
+      event: deployment
+      environment: staging
