@@ -20,7 +20,7 @@ pipeline:
     mount:
       - ./foo
     volumes:
-      - ./drone/cache:/cache
+      - $PWD/drone/cache:/cache
 
   build:
     image: alpine:edge
@@ -57,4 +57,4 @@ pipeline:
     mount:
       - ./foo
     volumes:
-      - ./drone/cache:/cache
+      - $PWD/drone/cache:/cache
