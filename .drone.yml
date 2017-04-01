@@ -17,9 +17,6 @@ pipeline:
       - echo this step should not fail
       - echo DRONE_JOB_NUMBER ${DRONE_JOB_NUMBER}
       - exit 0
-    when:
-      event: deployment
-      environment: staging
   test:
     image: alpine:edge
     commands:
