@@ -36,4 +36,4 @@ pipeline:
       - exit 1
     when:
       event: deployment
-      environment: staging
+      environment: production
