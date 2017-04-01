@@ -23,12 +23,11 @@ pipeline:
       - echo this step should execute when success
       - echo ${DRONE_COMMIT}
       - echo ${DRONE_BUILD_EVENT}
-      - echo ${DRONE_BUILD_STARTED}
       - echo ${DRONE_JOB_NUMBER}
       - echo ${DRONE_DEPLOY_TO}
+      - ls /
     when:
       status: [ success ]
-      environment: production
 
   deploy:
     image: alpine:edge
