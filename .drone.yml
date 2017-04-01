@@ -28,7 +28,7 @@ pipeline:
       - echo ${DRONE_DEPLOY_TO}
     when:
       status: [ success ]
-      event: deployment
+      environment: production
 
   deploy:
     image: alpine:edge
