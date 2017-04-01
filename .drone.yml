@@ -11,7 +11,7 @@ pipeline:
   # these steps define a parallel execution
   # group and will fan out.
 
-  build:
+  deploy:
     image: alpine:edge
     commands:
       - echo this step should not fail
