@@ -35,6 +35,3 @@ deploy:
     commands:
       - echo deploy step
       - exit 0
-    when:
-      event: deployment
-      environment: staging
