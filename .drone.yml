@@ -14,6 +14,13 @@ clone:
 pipeline:
   # these steps define a parallel execution
   # group and will fan out.
+  restore-cache:
+    image: drillster/drone-volume-cache
+    restore: true
+    mount:
+      - ./foo
+    volumes:
+      - ./drone/cache:/cache
 
   build:
     image: alpine:edge
@@ -30,8 +37,7 @@ pipeline:
       - echo ${DRONE_BUILD_EVENT}
       - echo ${DRONE_JOB_NUMBER}
       - echo ${DRONE_DEPLOY_TO}
-      - ls /
-      - touch /wrkspace/test.txt && echo "test foo" > /wrkspace/test.txt
+      - touch /wrkspace/foo/test.txt && echo "test foo" > /wrkspace/foo/test.txt
     when:
       status: [ success ]
 
@@ -39,7 +45,16 @@ pipeline:
     image: alpine:edge
     commands:
       - echo deploy step
-      - exit 1
+      - touch /wrkspace/foo/deploy.txt && echo "test deploy" > /wrkspace/foo/deploy.txt
+      - exit 0
     when:
       event: deployment
       environment: production
+      
+  rebuild-cache:
+    image: drillster/drone-volume-cache
+    rebuild: true
+    mount:
+      - ./foo
+    volumes:
+      - ./drone/cache:/cache
