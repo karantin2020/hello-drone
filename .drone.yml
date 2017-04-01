@@ -2,6 +2,10 @@ workspace:
   base: /wrkspace
   path: src/github.com/karantin2020/hello-drone
 
+cache:
+  mount:
+    - foo
+  
 clone:
   git:
     image: plugins/git
@@ -26,6 +30,7 @@ pipeline:
       - echo ${DRONE_JOB_NUMBER}
       - echo ${DRONE_DEPLOY_TO}
       - ls /
+      - touch /drone/foo/test.txt && cat "test foo" > /drone/foo/test.txt
     when:
       status: [ success ]
 
